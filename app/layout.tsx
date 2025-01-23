@@ -4,6 +4,8 @@ import "./globals.css";
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider } from "antd";
 import theme from "@/config/themeConfig";
+import Header from "./Component/Header/Header";
+import Footer from "./Component/Footer/Footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -29,7 +31,16 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ConfigProvider theme={theme}>
 
-      <AntdRegistry>{children}</AntdRegistry>
+      <AntdRegistry>
+        <div className="main-container">
+          <Header/>
+          <main className="flex-grow">
+
+        {children}
+          </main>
+          <Footer/>
+        </div>
+        </AntdRegistry>
         </ConfigProvider>
       </body>
     </html>
